@@ -7,7 +7,6 @@ const size_t FILESIZE = 256*NBYTES4K;           // 1MB,默认一个文件不超�
 const size_t FILESIZEMAX = 64*FILESIZE;        // 64MB,单文件不超过64MB
 
 
-
 void DieWithUserMessage(const char *msg, const char *detail){
 	fputs(msg, stderr);
 	fputs(": ", stderr);
@@ -27,7 +26,8 @@ int Open(const char *pathname, int oflag){
         return n;
 }
 int Creat(const char *pathname){
-    int n = open(pathname, (O_WRONLY|O_CREAT|O_TRUNC) );
+    umask(0);
+    int n = open(pathname, (O_WRONLY|O_CREAT|O_TRUNC), (S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP));
     if(n == -1)
         DieWithSystemMessage("creat() failed");
     else
