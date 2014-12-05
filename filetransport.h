@@ -9,14 +9,14 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <time.h>
-#include <unistd.h>
 // C++
 #include <iostream>
 using namespace std;
 
-extern const size_t NBYTES4K;
-extern const size_t FILESIZEMAX;
-extern const size_t FILESIZE;
+extern const size_t BYTES4K;
+extern const size_t BYTES1M;
+extern const size_t BYTES64M;
+extern const size_t BYTES128M;
 
 
 void DieWithUserMessage(const char *msg, const char *detail);
